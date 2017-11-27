@@ -1,0 +1,42 @@
+﻿body   { background-color : #F4F4FF;
+         color : black;
+         font-family : Verdana, Arial, sans-serif;
+       }
+
+h1     { color : #000090;
+         font-size : 150%;
+       }
+
+h2     { color : #000090;
+         font-size : 150%;
+       }
+
+h3     { color : #000090;
+         font-size : 115%;
+       }
+       
+h4     { color : #000090;
+         font-size : 107%;
+       }
+
+pre    { font-family: lucida console; font-weight: bold;
+         font-size: 120%; }
+
+.tt    { font-family : lucida console ; 
+         font-weight : bold; }
+
+.blue  { color : #000080 ;
+         font-weight : bold; }
+
+.red   { color : #FF0000 ;
+         font-weight : bold; }
+       
+.ov    { text-decoration: overline; }
+       
+ul.disc { list-style-type: disc }
+        
+td.c   { text-align: center; }
+
+ul.nb   { list-style-type: none; }
+
+	 

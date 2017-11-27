@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0058)http://facweb.cs.depaul.edu/sjost/it313/projects/proj7.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Project 7</title>
+<link rel="stylesheet" type="text/css" href="./Project 7_files/stylepage.css">
+<style type="text/css"></style></head>
+
+<body>
+<p style="text-align: right">
+<a href="http://facweb.cs.depaul.edu/sjost/it313/projects.htm">To Projects</a>
+</p>
+
+<h2>IT 313 -- Project 7</h2>
+
+<h3>Recursion Tree</h3>
+
+<ul type="disc">
+<li><strong>Goal:</strong> Predict the output of a recursive method call using a recursion tree.
+<br>&nbsp;</li>
+
+<li>Draw the recursion tree of the following source code, marking all method calls and outputs:<br>
+<ul>
+<pre>public static void main(String[ ] args) {
+    f(5, 2);
+}
+
+public static void f(int x, int y) {
+    if (x &gt; 0 &amp;&amp; y &gt; 0) {
+        f(y - 1, x - 2);
+        f(x - 2, y);
+        System.out.print((x + y) + " ");
+        f(x - 3, y - 1);
+        System.out.print((x - y) + " ");
+    }
+}
+</pre>
+</ul>
+</li>
+</ul>
+
+
+
+</body></html>

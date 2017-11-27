@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0058)http://facweb.cs.depaul.edu/sjost/it313/projects/proj4.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Project 5</title>
+<link rel="stylesheet" type="text/css" href="./Project 4_files/stylepage.css">
+<style type="text/css">
+.gr { color: #00BB00; }
+</style>
+<style type="text/css"></style></head>
+
+<body>
+<p style="text-align: right">
+<a href="http://facweb.cs.depaul.edu/sjost/it313/projects.htm">To Projects</a>
+</p>
+
+<h2>IT 313 -- Project 4</h2>
+
+<h3>Library Collection Manager</h3>
+
+<p><strong>Goal:</strong>&nbsp;&nbsp; Manage the Book and MultimediaItem objects in an 
+LibraryCollection class for a library.</p>
+
+<p><strong>Advice:</strong> &nbsp; If you can't implement all of the features of Project described in this document,
+implement what you can.  Start by implementing the LibraryItem, Book, and 
+MultimediaItem classes, with a test class.
+Than add in the LibraryCollection class later.  In each case, the test files must be in separate classes.</p>
+<p>Testing: Enter and save at least 3 Book objects and 3 MusicCD objects to test your application.  Use different items than the ones in this Project Description.
+You can get Dewey Decimal Numbers for the items that you enter from any library website.  You can use the Library of Congress
+number system if you prefer.</p>
+<p><strong>Details:</strong> </p>
+<ol type="1">
+<li>Before starting to write any source code, draw the UML diagram using Violet 
+or some other drawing system.
+<br>&nbsp;</li>
+<li>Implement these classes: LibraryItem, Book, MusicCD, 
+LibraryCollection<br>&nbsp;<br>
+<ul>
+<strong>LibraryItem</strong> &nbsp; Fields: _id &nbsp; _title &nbsp; _year &nbsp; _id
+<br>&nbsp;<br>
+
+<strong>Book</strong> &nbsp; Base class: LibraryItem &nbsp; Fields: _author &nbsp; _publisher
+<br>&nbsp;<br>
+
+<strong>MusicCD</strong> &nbsp;  Base class: LibraryItem &nbsp; Fields: _performer &nbsp; _composer &nbsp; _label
+<br>&nbsp;<br>
+
+For the LibraryItem, Book, and MusicCD objects include these methods:<br>
+ Methods: noarg constructor, parameterized constructor, getters, toString method.
+<br>&nbsp;<br>
+
+<strong>LibraryCollection</strong> &nbsp; Field: _col (ArrayList collection)<br>
+	Methods: noarg constructor,&nbsp; addBook (add book), displayAll (display all books), 
+	find (find all objects with specified
+substring in title), getItem (get and print item with specified id),
+load (deserialize _col from .ser file), addMusicCD (add music CD), 
+removeItem (remove item), save (serialize col to .ser file).
+<br>&nbsp;<br>
+
+
+</ul></li>
+
+<li>Implement a main method in the Shell class that repeatedly inputs commands 
+to execute LibraryCollection
+methods.  Here are example outputs:<br>
+<ul>
+<pre>Enter a command for the Library 
+Collection Management System.
+Add (B)ook, (D)isplay All, (F)ind, (G) Get Item, 
+(L)oad, Add (M)usic CD, (R)emove, (S)ave: <span class="gr">B</span>
+Enter Book information:
+Dewey Decimal Number: <span class="gr">822.91W725</span>
+Title: <span class="gr">Lord of the Flies</span>
+Author: <span class="gr">William Golding</span>
+Publisher: <span class="gr">Faber and Faber</span>
+Date: <span class="gr">1954</span>
+
+The following item has been added:
+Item Type: Book
+Dewey Decimal Number: 822.91W725
+Title: Lord of the Flies
+Author: William Golding
+Publisher: Faber and Faber
+Year: 1954
+
+Enter a command for the Library 
+Collection Management System.
+Add (B)ook, (D)isplay All, (F)ind, (G) Get Item, 
+(L)oad, Add (M)usic CD, (R)emove, (S)ave: <span class="gr">B</span>
+Enter Book information:
+Dewey Decimal Number: <span class="gr">823.91T649</span>
+Title: <span class="gr">Lord of the Rings</span>
+Author: <span class="gr">J.R.R. Tolkein</span>
+Publisher: <span class="gr">Mass Market Paperback</span>
+Date: <span class="gr">1949</span>
+
+The following item has been added:
+Item Type: Book
+Dewey Decimal Number: 823.91T649
+Title: Lord of the Rings
+Author: J.R.R. Tolkein
+Publisher: Mass Market Paperback
+Year: 1949
+
+Enter a command for the Library 
+Collection Management System.
+Add (B)ook, (D)isplay All, (F)ind, (G) Get Item, 
+(L)oad, Add (M)usic CD, (R)emove, (S)ave: <span class="gr">M</span>
+Enter Music CD information:
+Dewey Decimal Number: <span class="gr">793.31DVDLOR
+</span>Title: <span class="gr">Lord of the Dance</span>
+Performer: <span class="gr">Michael Flatley</span>
+Composer: <span class="gr">Ronan Hardiman</span>
+Label: <span class="gr">Polygram</span>
+Date: <span class="gr">1997</span>
+
+The following item has been added:
+Item Type: Music CD
+Dewey Decimal Number: 793.31DVDLOR
+Title: Lord of the Dance
+Performer: Michael Flatley
+Composer: Ronal Hardiman
+Label: Polygram
+Year: 1949
+
+Enter a command for the Library 
+Collection Management System.
+Add (B)ook, (D)isplay All, (F)ind, (G) Get Item, 
+(L)oad, Add (M)usic CD, (R)emove, (S)ave: <span class="gr">G</span>
+Dewey Decimal Number of item to get: <span class="gr">822.91W725</span>
+Item type: Book
+ID: 822.91W725
+Title: Lord of the Flies
+Author: William Golding
+Publisher: Faber and Faber
+Year: 1954
+
+Enter a command for the Library 
+Collection Management System.
+Add (B)ook, (D)isplay All, (F)ind, (G) Get Item, 
+(L)oad, Add (M)usic CD, (R)emove, (S)ave: <span class="gr">F</span>
+Enter string for title search: <span class="gr">Lord</span>
+
+Objects whose title contains the substring "Lord":
+
+Item type: Music CD
+ID: 793.31DVDLOR
+Title: Lord of the Dance
+Performer: Michael Flatley
+Composer: Ronan Hardiman
+Label: Polygram
+Year: 1997
+
+Item type: Book
+ID: B15
+Title: Lord of the Flies
+Author: Golding, William
+Publisher: Faber and Faber
+Year: 1954
+
+Item type: Book
+ID: B27
+Object type: Book
+Title: Lord of the Rings
+Author: J.R.R. Tolkien
+Publisher: Mass Market Paperback
+Year: 1949
+
+Enter a command for the Library 
+Collection Management System.
+Add (B)ook, (D)isplay All, (F)ind, (G) Get Item, 
+(L)oad, Add (M)usic CD, (R)emove, (S)ave: <span class="gr">L</span>
+
+Library items loaded.
+
+Enter a command for the Library 
+Collection Management System.
+Add (B)ook, (D)isplay All, (F)ind, (G) Get Item, 
+(L)oad, Add (M)usic CD, (R)emove, (S)ave: <span class="gr">R</span>
+ID to remove: 793.31DVDLOR
+Object with Dewey Decimal Number 793.31DVDLOR removed.
+
+Enter a command for the Library 
+Collection Management System.
+Add (B)ook, (D)isplay All, (F)ind, (G) Get Item, 
+(L)oad, Add (M)usic CD, (R)emove, (S)ave: <span class="gr">S</span>
+
+Library items saved.
+</pre></ul></li>
+
+<li>The toString methods of the Book and MusicCD classes should return the output 
+that is shown for LibraryCollection display, get, and find methods.
+<br>&nbsp;</li>
+
+<li>Keeps a log of all Display, Get, and Find requests
+that the library staff can analyze later to get ideas for new books to purchase. <br>&nbsp;</li>
+
+<li>TThe LibraryCollection class should implement the Comparable interface so that
+the results of the Inventory find method can be sorted before being returned.
+<br>&nbsp;</li>
+
+<li>The LibraryCollection class should implement the Serializable interface so that
+its collection (ArrayList or HashMap) can be serialized to or deserialized from a .ser file.
+<br>&nbsp;</li>
+
+<li>Optional: instead of using an ArrayList, consider using a HashMap collection 
+to hold the LibraryItem objects. This would make the LibraryCollection methods 
+display more quickly if the library has many items to check out.<br>&nbsp;</li>
+
+<li>Include Javadoc comments in each of your classes. When your project is 
+finished, run the javadoc utility and include the generated doc folder of html 
+files in your project zipfile. Use Javadoc comments at the beginning of classes, 
+constructors, and methods.
+br /&gt;&nbsp;<br>
+
+
+<ol type="a">
+<li>Format of Javadoc comment before a class:<br>
+<ul>
+<pre>/**
+ * Short description of class
+ *
+ * @author   Stan Smith 
+ * @version  1.6 2/26/14     
+ */
+public class MyClass {
+    // class body
+}
+</pre></ul></li>
+
+<li>Format of a Javadoc comment before a constructor or method:
+<ul>
+<pre>/**
+ * Short one line description.                  
+ * &lt;p&gt;
+ * Longer description. If there were any,
+ * it would be here.
+ * &lt;p&gt; 
+ * And even more explanations to follow in 
+ * consecutive paragraphs separated by HTML 
+ * paragraph breaks.
+ * &lt;p&gt;
+ * @param  parameter description.   
+ * @return return value description
+ * @throws description of exceptions thrown
+ */
+public int methodName(...) {
+    // method body }
+
+</pre></ul></li>
+
+<li>Format of a Javadoc comment before a public field:
+<ul>
+<pre>/**
+ * Description of variable here.
+ */
+public final int constantName = 1234;
+</pre></ul></li>
+</ol></li>
+</ol>
+
+<p><strong>Grading Breakdown</strong><br>
+Functionality: 120<br>
+Testing: 20<br>
+UML Diagram drawn with Violet: 15<br>
+Comments including Javadoc documentation: 20<br>
+Indentation and Formatting: 20<br>
+Zipped and Submitted Properly with source code headers containing: 5<br>
+&nbsp;&nbsp;&nbsp; Include&nbsp; source code headers containing the name, 
+project name, and submission date.</p>
+
+
+</body></html>

@@ -1,0 +1,69 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Scanner;
+
+import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.chart.ChartFactory; 
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.JFreeChart; 
+import org.jfree.chart.ChartUtilities;
+public class Main {
+
+    private static final int NUM_CURRENCIES = 5;
+
+    public static void main(String[] args) 
+        throws IOException {
+		
+        File file = new File("currency-codes.txt");
+        Scanner inFile = new Scanner(file);
+        DefaultCategoryDataset barChartDataset = new DefaultCategoryDataset();
+        for(int i = 1; i <= NUM_CURRENCIES; i++) {
+            String currencyCode = getCurrency(inFile);
+            String urlString = getURLString(currencyCode, "USD");
+	        double exchangeRate = getExchangeRate(urlString);
+	        barChartDataset.addValue(exchangeRate, "rates", currencyCode);         
+        }
+		
+        // Define JFreeChart object that creates line chart.
+        JFreeChart barChartObject = ChartFactory.createBarChart(
+            "Currency Exchange Rates", "Currency", 
+            "Currency Rates", barChartDataset,
+            PlotOrientation.VERTICAL, 
+            false,  // Include legend.
+            false,  // Include tooltips.
+            false); // Include URLs.               
+                      
+         // Write line chart to a file.               
+         int imageWidth = 640;
+         int imageHeight = 480;                
+         File barChart = new File("currency-rates.png");              
+         ChartUtilities.saveChartAsPNG(
+             barChart, barChartObject, imageWidth, imageHeight); 
+	}
+	
+    public static String getCurrency(Scanner s) {
+        if (s.hasNext( )) {
+            return s.next( );
+        }
+        else {
+            return "";
+        }
+    }
+	
+    public static String getURLString(String sourceCode, String targetCode) {
+        String prefix = "http://download.finance.yahoo.com/d/quotes.csv?s=";
+        String suffix = "=X&f=sl1d1t1ba&e=.csv";
+        return prefix + sourceCode + targetCode + suffix;
+    }
+	
+    public static double getExchangeRate(String urlString) 
+        throws IOException {
+        
+        URL url = new URL(urlString);
+        Scanner s = new Scanner(url.openStream( ));
+        return Double.parseDouble(s.nextLine( ).split(",")[1].trim( ));
+    }
+}

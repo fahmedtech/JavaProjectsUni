@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0058)http://facweb.cs.depaul.edu/sjost/it313/projects/proj5.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Project 5</title>
+<link rel="stylesheet" type="text/css" href="./Project 5_files/stylepage.css">
+<style type="text/css">
+.gr { color: lime; }
+</style>
+<style type="text/css"></style></head>
+
+<body>
+<p style="text-align: right">
+<a href="http://facweb.cs.depaul.edu/sjost/it313/projects.htm">To Projects</a>
+</p>
+
+<h2>IT 313 -- Project 5</h2>
+
+<h3>Observer Software Pattern</h3>
+
+<p><strong>Goal:</strong> Write a CurrencyMonitor class (Observable) and two observer classes Grapher and Logger.</p>
+
+<p><strong>Deliverables:</strong> (1) Zip file of the Eclipse project, (2) UML diagram of the project drawn with software, such as Violet.</p>
+
+<h3>Details</h3>
+
+<ol type="1">
+<li>Write a CurrencyMonitor class that monitors the exchange rates of five currencies of your choosing.  Use the URL
+that you used for Project 2b:<br>
+<pre>http://download.finance.yahoo.com/d/quotes.csv?s=EURUSD=X&amp;f=sl1d1t1ba&amp;e=.csv 
+</pre>
+Replace EUR with the five currency codes that you wish to monitor.<br>&nbsp;<br>
+<ol type="a">
+<li>CurrencyMonitor objects is are observables, so the CurrencyMonitor class extends the Observable class.
+<br>&nbsp;</li>
+<li>The CurrencyMonitor class should have five instance variables, one for each currency being monitored.
+For example:<br>
+<ul>
+<pre>private double aud, cad, chf, gbp, eur;  
+</pre></ul></li>
+<li>Write a constructor that initializes the instance variables all to 0.0 and adds, as observers,
+an object from each of the classes Grapher and Logger.
+<br>&nbsp;</li>
+
+<li>Write getters for each of the instance variables.
+<br>&nbsp;</li>
+
+<li>Write a method named checkCurrencies:<br>
+<ul>
+<pre>public void checkCurrencies( )
+</pre></ul>
+This method should set up a loop that, every 60 seconds, compares the values of 
+the exchange rates in the instance variables with the currency values read from 
+the internet using the above URL. If at least one of the instance variable 
+exchange rates differs from the corresponding internet exchange rate, call the 
+Observable setChanged method, update the instance variables, and call the 
+notifyObservers method, which passes as an argument, a string with the current currency rates, 
+for example, <span class="tt">"0.78,0.81,1.05,1.55,1.13"</span>.
+This string represents the source exchange rates for converting to USD for the 
+currency codes AUD, CAD, CHF, GBP, EUR.</li>
+</ol><br></li>
+
+<li>Write a Logger class that graphs the exchange rates that the CurrencyMonitor class is monitoring.
+<br>&nbsp;<br>
+<ol type="a">
+<li>The Logger class is an observer, so it implements the Observer interface.
+<br>&nbsp;</li>
+<li>Define the instance variable logFileName.  See the Casino Example in the observable examples file.
+<br>&nbsp;</li>
+<li>Write a constructor that initializes logFileName.
+<br>&nbsp;</li>
+
+<li>Write an update method:<br>
+<ul>
+<pre>public void update(Observable obs, Object info)
+</pre></ul>
+This method should obtain the info exchange rate string, use split to extract the fields, and use double.ParseDouble to 
+convert the exchange rates to numbers.  These exchange rates should then be written to a log file.&nbsp; 
+Never call this method directly; it is called automatically by the 
+notifyObservers method of the Observable base class.</li>
+</ol><br></li>
+
+<li>Write a Grapher class.  This class should be similar to the Logger class in 2, but instead of appending
+the currency rates to the log file, it should create a bargraph of the current currency rates that
+are obtained from the update method.&nbsp; The solution to Project 3b, which we 
+will discuss on Monday, 3/2, may be useful.</li>
+</ol>
+
+<p><strong>Grading Breakdown:</strong> Functionality 70%, Indentation 10%, Comments 10%, Header with your name, 
+project number, and submission date 5%, Submitted properly, including name and project number in Java project name
+and zip file name 5%</p>
+
+
+</body></html>

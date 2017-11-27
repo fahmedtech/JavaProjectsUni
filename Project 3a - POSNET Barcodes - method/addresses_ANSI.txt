@@ -1,0 +1,5 @@
+Anna Lee,123 Nice Street,Memphis,TN,38141-8346
+Stan Smith,456 De La Vina Street,Santa Barbara,CA,93101-3298
+Meredith Baker,1343 Maple Avenue,Denver,CO,80236-2982
+Julia Chen,336 Euclid Avenue,Cleveland,OH,44120-4321
+Jason Sanchez,4320 West Diversey Avenue,Chicago,IL,60738-7609

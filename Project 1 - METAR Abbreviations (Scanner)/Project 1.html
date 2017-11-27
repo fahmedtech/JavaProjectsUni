@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0058)http://facweb.cs.depaul.edu/sjost/it313/projects/proj1.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Project 1</title>
+<link rel="stylesheet" type="text/css" href="./Project 1_files/stylepage.css">
+<style type="text/css">
+sup.reference{font-weight:normal;font-style:normal} sup.reference{font-weight:normal;font-style:normal} .mw-body sup {font-size:80%} sup.reference{unicode-bidi:-moz-isolate;unicode-bidi:-webkit-isolate;unicode-bidi:isolate}sup,sub{line-height:1}
+.auto-style1 {
+	font-size: 80%;
+}
+</style>
+<style type="text/css"></style></head>
+
+<body>
+<p style="text-align: right">
+<a href="http://facweb.cs.depaul.edu/sjost/it313/projects.htm">To Projects</a>
+</p>
+
+<h2>IT 313 -- Project 1</h2>
+
+<h3>METAR Abbreviations</h3>
+
+<ul type="disc">
+
+<li>
+METAR (Meteorological Aviation Report) is a format for reporting weather information, either for pilots
+in pre-flight weather briefings or by meteorologists to aid them in weather forecasting.
+<br>&nbsp;</li>
+
+<li>Here is a sample METAR report:<br>
+<ul>
+<pre>SPECI KPWK 042100Z 05010KT 10SM BKN030
+OVC036 M01/M08 A3049 RMK AO2 T10111078
+</pre>
+</ul>
+Translation:<br>
+SPECI means that this is an unscheduled METAR report issued when certain criteria are met.<br>
+KPWK is the airport identifier for Chicago Executive Airport 18 
+miles northwest of the city center.<br>
+Z means Zulu time (Coordinated Universal Time): 4:21:00pm.<br>
+KT means wind direction and speed: direction 50 degrees clockwise from North and 
+speed 10 knots. <br>
+SM means visibility: 10 miles.<br>
+BKN means clouds with cloud bottoms at 3,000 ft. are broken (cover 5/8 to 7/8 of 
+sky).<br>
+OVC means that clouds with cloud bottoms at 3,600 ft. are overcast (cover all of 
+the sky).<br>
+M01/M08 means that the temperature is minus 1 Celsius and that the dew point is 
+minus 8 Celsius.<br>
+A indicates an altimeter pressure reading of 10.49 inches of mercury.<br>
+RMK means that the Remarks Section follows.<br>
+A02 indicates that the station is automated with a precipitation discriminator<br>
+T10171017 is a breakdown of the temperature and dew point in eight digits 
+separated into two groups of four.</li>
+</ul>
+
+<ul type="disc">
+
+<li>Look up the English meanings of these METAR abbreviations online (Wikipedia is a good source):<br>
+<ul>
+<pre>+  -  B  DZ  E  HZ  RA  SN
+</pre>
+</ul></li>
+
+<li>Write a Java program that reads one of these eight abbreviations, then prints its English meaning.
+Use an if..else statement to do the translation.
+<br>&nbsp;</li>
+
+<li>Name your Java project according to the standard naming convention: <span class="tt">Proj1Smith</span>, where you
+replace Smith by your last name.  Also name your zip file <span class="tt">Proj1Smith.zip</span>
+<br>&nbsp;</li>
+
+
+<li>If the input does not match any of these eight abbreviations, print "Unknown abbreviation".
+<br>&nbsp;</li>
+
+<!--
+<li>For example, here is a METAR weather report for the Midway Station in Chicago, for midnight,
+January 7, 2014:<br />
+<ul>
+<pre>
+METAR KMDW 070551Z 26013G17KT 10SM FEW020 
+M23/M27 A3024 RMK AO2 SLP276 4/010 
+T12331272 11228 21239 411831261 55003 $
+</pre>
+</ul>-->
+
+<li>Here is a <a href="http://www.wunderground.com/metarFAQ.asp" target="new">METAR tutorial</a> from 
+Weather Underground to help you decode this METAR report. You can also consult Wikipedia for an overview of METAR.
+<br>&nbsp;</li>
+
+<li>Submit a zip file of your Eclipse project folder.
+<br>&nbsp;</li>
+
+<li>Note: don't use the == operator for String objects, use the String equals method instead 
+as in the NumToWords Example in the num-to-words file.
+<br>&nbsp;</li>
+
+<li><strong>Grading Breakdown:</strong> &nbsp; Functionality: 70%; Indentation: 10%; Source code comments: 10%; 
+Properly Submitted: 10%</li>
+</ul>
+
+
+
+</body></html>

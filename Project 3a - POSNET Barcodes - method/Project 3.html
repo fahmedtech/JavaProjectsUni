@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0058)http://facweb.cs.depaul.edu/sjost/it313/projects/proj3.htm -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Project 3</title>
+<link rel="stylesheet" type="text/css" href="./Project 3_files/stylepage.css">
+<style type="text/css"></style></head>
+
+<body>
+<p style="text-align: right">
+<a href="http://facweb.cs.depaul.edu/sjost/it313/projects.htm">To Projects</a>
+</p>
+
+<h2>IT 313 -- Project 3</h2>
+
+<h3>Part A: POSTNET Bar Codes</h3>
+
+<p><strong>Goal:</strong> Print Address with POSTNET bar code. (POSTNET means Postal Numeric Encoding Technique.)<br>
+Here is an example of such an address:<br>&nbsp;<br>
+<img src="./Project 3_files/postnet.png"><br>&nbsp;<br>
+We will use the vertical line ( <span class="tt">|</span> ) to represent the long 
+vertical bar and semicolon ( <span class="tt">:</span> ) to represent the short 
+vertical bar</p>
+<p><strong>Input File:</strong> &nbsp; <a href="http://facweb.cs.depaul.edu/sjost/it313/projects/addresses.txt">addresses.txt</a> (Naming this input file 
+with a .csv extension is also okay, but then
+it opens up in Excel if you double click on its name in the Windows Explorer.)</p>
+<p><strong>Details:</strong></p>
+<ol type="1">
+<li>Read an input CSV file containing addresses using a Scanner object.  Don't redirect from stdin, read directly from the file.
+Here are two sample lines from a mailing list:<br>
+<ul>
+<pre>Anna Lee,123 Nice Street,Memphis,TN,38141-8346
+Stan Smith,456 De La Vina Street,Santa Barbara,CA,93101-3298 
+</pre></ul></li>
+<li>Obtain the input file using a JFileChooser dialog.
+See the UseFileChooser Example in the input-output examples file.<br>&nbsp;</li>
+<li>For each line write out an address like this to stdout:<br>
+<ul>
+<pre>Anna Lee
+123 Nice Street
+Memphis TN 38141-8346
+<span style="font-size:90%">|::||:|::|::::||:|::|:::|||::|:::||::|::|:||::::|:||</span>
+
+Stan Smith
+456 De La Vina Street
+Santa Barbara CA 93101-3298
+<span style="font-size:90%">||:|::::||::::||||::::::||::||:::|:||:|::|::|:::|:||</span>
+</pre>
+</ul></li>
+
+<li>The bar code is encoded using this table:<br>&nbsp;<br>
+<table cellpadding="5" border="1">
+<tbody><tr> <th>1</th> <th>2</th> <th>3</th> <th>4</th> <th>5</th> <th>6</th> <th>7</th> <th>8</th> <th>9</th> <th>0</th> </tr>
+<tr> <td>:::||</td> <td>::|:|</td> <td>::||:</td> <td>:|::|</td> <td>:|:|:</td> 
+<td>:||::</td> <td>|:::|</td> <td>|::|:</td> <td>|:|::</td> <td>||:::</td></tr>
+</tbody></table><br>
+In addition to encoding the 9 digits of the zip code, the bar code includes initial (i) and terminal (t) frame bars and a check sum (cs),
+which is 10 - the sum of the zip code digits mod 10.  Thus the zip code 38141-8346 is encoded like this:<br>
+<pre style="font-size:80%">i   3     8     1     4     1     8     3     4     6     cs  t
+| ::||: |::|: :::|| :|::| :::|| |::|: ::||: :|::| :||:: ::|:| | 
+</pre>
+The sum of the digits is 38 and 38 % 10 is 8, so the check sum is 10 - 
+8 = 2.  The initial and terminal frame bars are
+always |.<br>&nbsp;<br>
+Note: If the sum of the digit % 10 is 0, the check sum is 10 - 0 = 10, which should be replaced by 0.  This can be done with an if statement, or with<br>
+<ul>
+<pre>checksum %= 10
+</pre></ul>
+
+See this article for more details:<br>&nbsp;<br>
+<ul>
+<a href="http://en.wikipedia.org/wiki/POSTNET" target="_blank">
+http://en.wikipedia.org/wiki/POSTNET</a>
+</ul><br></li>
+
+<li>Write and use this method:<br>
+<ul>
+<pre>public static String getBarCode(String zipcode)
+</pre></ul></li>
+</ol>
+
+<p><strong>Grading Breakdown:</strong> &nbsp; Functionality: 60%; User Prompts: 10%; Comments: 10%; Indentation: 10%; Submitted 
+Correctly: 10%</p>
+
+<h3><a name="proj3b">Part B: JFreeChart Graphs</a></h3><a name="proj3b">
+
+<p>These examples are relevent:<br>
+WriteGreetings (input-output)&nbsp; ReadFromWeb (input-output)&nbsp; 
+BarGraph (jfreechart)
+PersonCol (PersonCol)</p>
+</a><ol type="1"><a name="proj3b">
+<li>Choose five international source currencies to monitor.  Each currency is referenced with a three letter 
+ISO 4217 currency code.  For example,
+the code for the U.S. Dollar currency is USD.  Search online for these abbreviations with a search string such as 
+"ISO 4217 Currency Codes."  Place these currency codes in a text file.
+<br>&nbsp;</li>
+
+</a><li><a name="proj3b">The following URL is a link to a CSV file that contains the exchange rate for a 
+given source and target currency. For example, if the source currency is EUR and the target currency is 
+USD, the URL is<br>&nbsp;<br>
+</a><a href="http://download.finance.yahoo.com/d/quotes.csv?s=EURUSD=X&amp;f=sl1d1t1ba&amp;e=.csv" target="new">
+http://download.finance.yahoo.com/d/quotes.csv?s=EURUSD=X&amp;f=sl1d1t1ba&amp;e=.csv</a>
+<br>&nbsp;<br>
+Read the five source currencies in the text file that you created in Step 1, 
+dynamically create URLs that are passed to Java Scanner objects to obtain the exchange rates 
+(to USD) for five source currencies from Part 1.
+<br>&nbsp;</li>
+
+<li>Plot the five exchange rates that you found in Step 2 in a JFreeChart bar chart.  See the BarChart Example in the jfreechart example file.</li>
+</ol>
+
+<p>Your Java project should contain only a single class, which contains the main method.  
+This class must define at least three additional static methods that modularize the tasks in 
+this project.&nbsp; For example, you might define methods such as these:<br>
+</p><ul>
+<pre>public static String getCurrency(Scanner s)
+public static String getURLString(String sourceCurrency, 
+    String targetCurrency)
+public static double getExchangeRate(String urlString)</pre></ul><br>
+
+<strong>Grading Breakdown:</strong> &nbsp; Functionality: 70%; Comments: 10%; Indentation: 10%; Submitted 
+Correctly: 10%<p></p>
+
+
+
+
+</body></html>
